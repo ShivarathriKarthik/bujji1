@@ -1,6 +1,6 @@
 # Stained Glass Love Fountain ❤️
 
-A small interactive romantic experience built with Python and Streamlit.
+An interactive romantic Streamlit experience with your four photos included.
 
 ## Run locally
 ```bash
@@ -12,12 +12,9 @@ streamlit run app.py
 ```
 
 ## Deploy free on Streamlit Community Cloud
-1. Create a GitHub repository and upload `app.py` and `requirements.txt`.
-2. Sign in to https://share.streamlit.io/ with GitHub.
-3. Choose **Create app**, select your repository, branch, and `app.py`.
-4. Deploy and share the generated public URL.
+1. Upload `app.py`, `requirements.txt`, and the entire `assets/` folder to GitHub.
+2. Go to https://share.streamlit.io/ and sign in with GitHub.
+3. Create an app using your repository and `app.py`.
+4. Deploy and share the generated URL.
 
-Edit the `messages` list in `app.py` to personalize the sequence before deploying.
-
-## Personal photos
-The four uploaded photos are included in `assets/` and displayed in a two-column gallery near the top of the experience. Keep the `assets` folder when uploading the project to GitHub. You can replace the images while keeping the same filenames, or update the paths in `app.py`.
+The four photos are stored in `assets/` and are displayed in the frontend gallery.
