@@ -95,25 +95,51 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# A little photo gallery, using the four pictures you provided.
+# A compact, two-photo couple slideshow — no solo pictures.
+if "photo_slide" not in st.session_state:
+    st.session_state.photo_slide = 0
+
+couple_photos = [
+    ("assets/couple_festival.jpg", "Dandiya night — the night we got closer ❤️",
+     "One of my favourite memories is simply standing beside you."),
+    ("assets/couple_trip.jpg", "My favourite travel partner 💗",
+     "Wherever we go, my favourite part is being there with you."),
+]
+
 st.markdown("""
-<div class="hero" style="padding-top:.2rem">
+<div style="text-align:center;margin:.35rem 0 .65rem;">
   <div class="eyebrow">Our little memories</div>
-  <p>Every picture holds a moment I want to keep close. ❤️</p>
+  <div style="font-family:'Cormorant Garamond',serif;color:#ffe7f3;font-size:1.75rem;">
+    Just us ❤️
+  </div>
 </div>
 """, unsafe_allow_html=True)
 
-photo_cols = st.columns(2, gap="medium")
-photo_items = [
-    ("assets/solo_festive.jpg", "One of my favourite pictures"),
-    ("assets/couple_festive.jpg", "A moment together"),
-    ("assets/solo_casual.jpg", "My favourite smile"),
-    ("assets/couple_casual.jpg", "Us, just being us"),
-]
-for col, (photo_path, caption) in zip([photo_cols[0], photo_cols[1], photo_cols[0], photo_cols[1]], photo_items):
-    with col:
-        st.image(photo_path, use_container_width=True)
-        st.caption(caption)
+photo_path, photo_title, photo_note = couple_photos[st.session_state.photo_slide]
+left, center, right = st.columns([1, 2, 1], gap="small")
+with center:
+    st.image(photo_path, width=260)
+    st.markdown(
+        f'<div style="text-align:center;color:#ffe7f3;font-weight:600;margin-top:.15rem;">{photo_title}</div>'
+        f'<div style="text-align:center;color:#d9c8dc;font-size:.86rem;line-height:1.45;margin:.25rem 0 .55rem;">{photo_note}</div>',
+        unsafe_allow_html=True
+    )
+
+nav_left, dots, nav_right = st.columns([1, 1, 1])
+with nav_left:
+    if st.button("← Previous", key="photo_prev", disabled=st.session_state.photo_slide == 0):
+        st.session_state.photo_slide -= 1
+        st.rerun()
+with dots:
+    st.markdown(
+        f'<div style="text-align:center;color:#e7b9d6;padding-top:.6rem;font-size:.85rem;">'
+        f'{st.session_state.photo_slide + 1} / {len(couple_photos)}　● {"○" if st.session_state.photo_slide == 0 else "●"}</div>',
+        unsafe_allow_html=True
+    )
+with nav_right:
+    if st.button("Next →", key="photo_next", disabled=st.session_state.photo_slide == len(couple_photos)-1):
+        st.session_state.photo_slide += 1
+        st.rerun()
 
 components.html(fountain_svg(st.session_state.step), height=430, scrolling=False)
 
