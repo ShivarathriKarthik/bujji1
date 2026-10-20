@@ -100,9 +100,9 @@ if "photo_slide" not in st.session_state:
     st.session_state.photo_slide = 0
 
 couple_photos = [
-    ("assets/couple_festival.jpg", "Dandiya night — the night we got closer ❤️",
+    ("couple_festival.jpg", "Dandiya night — the night we got closer ❤️",
      "One of my favourite memories is simply standing beside you."),
-    ("assets/couple_trip.jpg", "My favourite travel partner 💗",
+    ("couple_trip.jpg", "My favourite travel partner 💗",
      "Wherever we go, my favourite part is being there with you."),
 ]
 
