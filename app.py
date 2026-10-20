@@ -94,6 +94,27 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+
+# A little photo gallery, using the four pictures you provided.
+st.markdown("""
+<div class="hero" style="padding-top:.2rem">
+  <div class="eyebrow">Our little memories</div>
+  <p>Every picture holds a moment I want to keep close. ❤️</p>
+</div>
+""", unsafe_allow_html=True)
+
+photo_cols = st.columns(2, gap="medium")
+photo_items = [
+    ("assets/solo_festive.jpg", "One of my favourite pictures"),
+    ("assets/couple_festive.jpg", "A moment together"),
+    ("assets/solo_casual.jpg", "My favourite smile"),
+    ("assets/couple_casual.jpg", "Us, just being us"),
+]
+for col, (photo_path, caption) in zip([photo_cols[0], photo_cols[1], photo_cols[0], photo_cols[1]], photo_items):
+    with col:
+        st.image(photo_path, use_container_width=True)
+        st.caption(caption)
+
 components.html(fountain_svg(st.session_state.step), height=430, scrolling=False)
 
 title, body = messages[st.session_state.step]

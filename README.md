@@ -18,3 +18,6 @@ streamlit run app.py
 4. Deploy and share the generated public URL.
 
 Edit the `messages` list in `app.py` to personalize the sequence before deploying.
+
+## Personal photos
+The four uploaded photos are included in `assets/` and displayed in a two-column gallery near the top of the experience. Keep the `assets` folder when uploading the project to GitHub. You can replace the images while keeping the same filenames, or update the paths in `app.py`.
